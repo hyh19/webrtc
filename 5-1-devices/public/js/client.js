@@ -1,10 +1,10 @@
 'use strict'
-var audioSource = document.querySelector("select#audioSource");
-var audioOutput = document.querySelector("select#audioOutput");
-var videoSource = document.querySelector("select#videoSource");
 
-if (!navigator.mediaDevices ||
-    !navigator.mediaDevices.enumerateDevices) {
+const audioSource = document.querySelector("select#audioSource");
+const audioOutput = document.querySelector("select#audioOutput");
+const videoSource = document.querySelector("select#videoSource");
+
+if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
     console.log('enumerateDevices is not supported!');
 } else {
     navigator.mediaDevices.enumerateDevices()
@@ -14,11 +14,8 @@ if (!navigator.mediaDevices ||
 
 function gotDevices(deviceInfos) {
     deviceInfos.forEach(function (deviceInfo) {
-        console.log(deviceInfo.kind + ": label = "
-            + deviceInfo.label + ": id = "
-            + deviceInfo.deviceId + ": groupId = "
-            + deviceInfo.groupId);
-        var option = document.createElement('option');
+        console.log(deviceInfo.kind + ": label = " + deviceInfo.label + ": id = " + deviceInfo.deviceId + ": groupId = " + deviceInfo.groupId);
+        const option = document.createElement('option');
         option.text = deviceInfo.label;
         option.value = deviceInfo.deviceId;
         if (deviceInfo.kind === 'audioinput') {
