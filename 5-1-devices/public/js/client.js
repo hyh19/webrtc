@@ -14,7 +14,7 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 
 function gotDevices(deviceInfos) {
     deviceInfos.forEach(function (deviceInfo) {
-        console.log(deviceInfo.kind + ": label = " + deviceInfo.label + ": id = " + deviceInfo.deviceId + ": groupId = " + deviceInfo.groupId);
+        console.log("kind = " + deviceInfo.kind + ", label = " + deviceInfo.label + ", deviceId = " + deviceInfo.deviceId + ", groupId = " + deviceInfo.groupId);
         const option = document.createElement('option');
         option.text = deviceInfo.label;
         option.value = deviceInfo.deviceId;
@@ -26,7 +26,6 @@ function gotDevices(deviceInfos) {
             videoSource.appendChild(option);
         }
     });
-
 }
 
 function handleError(err) {
