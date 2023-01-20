@@ -8,11 +8,11 @@ if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
     console.log('enumerateDevices is not supported!');
 } else {
     navigator.mediaDevices.enumerateDevices()
-        .then(gotDevices)
+        .then(getDevices)
         .catch(handleError);
 }
 
-function gotDevices(deviceInfos) {
+function getDevices(deviceInfos) {
     deviceInfos.forEach(function (deviceInfo) {
         console.log("kind = " + deviceInfo.kind + ", label = " + deviceInfo.label + ", deviceId = " + deviceInfo.deviceId + ", groupId = " + deviceInfo.groupId);
         const option = document.createElement('option');
@@ -28,6 +28,6 @@ function gotDevices(deviceInfos) {
     });
 }
 
-function handleError(err) {
-    console.log(err.name + " : " + err.message);
+function handleError(error) {
+    console.log(error.name + " : " + error.message);
 }
